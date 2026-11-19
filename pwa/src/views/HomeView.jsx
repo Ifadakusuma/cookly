@@ -68,42 +68,42 @@ export default function HomeView({
   const isFavorite = (id) => favorites.some((f) => String(f.id) === String(id));
 
   return (
-    <div className="space-y-8 sm:space-y-10 pb-20 md:pb-16 w-full">
-      {/* Hero Welcome Banner - Full Width with Enlarged, Rich Typography */}
-      <section className="bg-gradient-to-br from-cookly-greenLight/70 via-cream-100 to-white rounded-3xl p-8 sm:p-12 md:p-14 lg:p-16 border border-cream-200/90 shadow-soft relative overflow-hidden w-full transition-all">
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8 lg:gap-12">
-          <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/95 text-cookly-greenDark text-sm sm:text-base font-black shadow-xs">
-              <Sparkles className="w-5 h-5 text-cookly-amber" />
+    <div className="space-y-6 sm:space-y-8 pb-20 md:pb-16 w-full">
+      {/* Hero Welcome Banner - Clean, Balanced & Proportionate */}
+      <section className="bg-gradient-to-br from-cookly-greenLight/70 via-cream-100 to-white rounded-3xl p-6 sm:p-8 md:p-10 border border-cream-200/90 shadow-soft relative overflow-hidden w-full transition-all">
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-8">
+          <div className="max-w-2xl space-y-2.5 sm:space-y-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 text-cookly-greenDark text-xs sm:text-sm font-black shadow-xs">
+              <Sparkles className="w-4 h-4 text-cookly-amber" />
               <span>Inspirasi Menu Setiap Hari</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-black text-cookly-brown leading-[1.12] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-black text-cookly-brown leading-tight tracking-tight">
               Mau masak apa hari ini, Chef?
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-cookly-brownLight leading-relaxed font-medium">
+            <p className="text-sm sm:text-base text-cookly-brownLight leading-relaxed font-medium">
               Temukan resep pilihan mulai dari masakan nusantara, western, diet sehat, hingga hidangan penutup favorit keluarga.
             </p>
           </div>
 
-          {/* Enlarged Search Bar Input */}
-          <div className="w-full lg:w-[480px] xl:w-[560px] flex-shrink-0">
+          {/* Balanced & Sleek Search Bar Input */}
+          <div className="w-full lg:w-[380px] xl:w-[420px] flex-shrink-0">
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none text-cookly-brownLight">
-                <Search className="w-7 h-7" />
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-cookly-brownLight">
+                <Search className="w-5 h-5" />
               </div>
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Cari nama resep, bumbu, atau masakan..."
-                className="w-full pl-16 pr-14 py-5 sm:py-6 bg-white rounded-3xl text-lg sm:text-xl font-bold text-cookly-brown placeholder:text-cookly-brownLight/60 border-2 border-cream-300 focus:outline-none focus:border-cookly-green focus:ring-4 focus:ring-cookly-green/15 shadow-soft hover:shadow-md transition"
+                placeholder="Cari nama resep, bumbu, masakan..."
+                className="w-full pl-12 pr-10 py-3.5 sm:py-4 bg-white rounded-2xl text-sm sm:text-base font-bold text-cookly-brown placeholder:text-cookly-brownLight/60 border-2 border-cream-300 focus:outline-none focus:border-cookly-green focus:ring-4 focus:ring-cookly-green/15 shadow-soft hover:shadow-md transition"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute inset-y-0 right-0 pr-6 flex items-center text-cookly-brownLight hover:text-cookly-brown transition"
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-cookly-brownLight hover:text-cookly-brown transition"
                 >
-                  <X className="w-6 h-6 stroke-[2.5]" />
+                  <X className="w-5 h-5 stroke-[2.5]" />
                 </button>
               )}
             </div>
@@ -111,24 +111,24 @@ export default function HomeView({
         </div>
 
         {/* Decorative Background Glow Blob */}
-        <div className="absolute -right-10 -bottom-10 w-96 h-96 rounded-full bg-cookly-green/15 blur-3xl pointer-events-none"></div>
+        <div className="absolute -right-10 -bottom-10 w-80 h-80 rounded-full bg-cookly-green/15 blur-3xl pointer-events-none"></div>
       </section>
 
-      {/* Category Filter Section - Dengan Jarak Nyaman dari Banner */}
-      <section id="section-kategori" className="space-y-5 sm:space-y-6 w-full scroll-mt-28 pt-6 sm:pt-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-          <div className="space-y-1.5">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-cookly-brown tracking-tight">
+      {/* Category Filter Section - Compact & Proportionate */}
+      <section id="section-kategori" className="space-y-3.5 sm:space-y-4 w-full scroll-mt-24 pt-2">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+          <div className="space-y-1">
+            <h3 className="text-xl sm:text-2xl font-black text-cookly-brown tracking-tight">
               Kategori Pilihan
             </h3>
-            <p className="text-sm sm:text-base md:text-lg text-cookly-brownLight font-medium">
+            <p className="text-xs sm:text-sm text-cookly-brownLight font-medium">
               Pilih rumpun masakan favorit untuk menyaring resep masakan
             </p>
           </div>
           {selectedCategory && (
             <button
               onClick={() => setSelectedCategory("")}
-              className="text-xs sm:text-sm font-black text-cookly-green hover:underline flex items-center gap-1.5 self-start sm:self-auto px-4 py-2 rounded-full bg-cookly-greenLight/70 transition"
+              className="text-xs sm:text-sm font-black text-cookly-green hover:underline flex items-center gap-1.5 self-start sm:self-auto px-3.5 py-1.5 rounded-full bg-cookly-greenLight/70 transition"
             >
               <span>✕</span>
               <span>Tampilkan Semua Resep</span>
@@ -143,17 +143,17 @@ export default function HomeView({
         />
       </section>
 
-      {/* Recipes Catalog Feed - Jarak Ditarik Lebih Dekat ke Atas */}
-      <section className="space-y-5 sm:space-y-6 w-full pt-0">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-cream-200 pb-3">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-cookly-brown">
+      {/* Recipes Catalog Feed */}
+      <section className="space-y-4 sm:space-y-5 w-full pt-1">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-cream-200 pb-2.5">
+          <h3 className="text-xl sm:text-2xl font-black text-cookly-brown">
             {selectedCategory
               ? `Resep ${categories.find((c) => String(c.id) === String(selectedCategory))?.name || ""}`
               : debouncedSearch
               ? `Hasil Pencarian "${debouncedSearch}"`
               : "Semua Resep Masakan"}
           </h3>
-          <span className="text-sm sm:text-base md:text-lg font-bold text-cookly-brownLight">
+          <span className="text-xs sm:text-sm font-bold text-cookly-brownLight">
             {recipes.length} resep ditemukan
           </span>
         </div>
