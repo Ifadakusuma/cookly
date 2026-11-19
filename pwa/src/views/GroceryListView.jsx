@@ -169,38 +169,38 @@ export default function GroceryListView({
   const groupKeys = Object.keys(groupedGroceries);
 
   return (
-    <div className="w-full pb-24 space-y-8 animate-in fade-in duration-200">
+    <div className="w-full pb-20 space-y-5 animate-in fade-in duration-200">
       {/* 1. Header Banner */}
-      <section className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-cream-200 shadow-soft relative overflow-hidden">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center md:text-left">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cookly-greenLight text-cookly-greenDark font-black text-xs sm:text-sm tracking-wider uppercase shadow-xs">
-              <ShoppingBag className="w-4 h-4 text-cookly-green" />
+      <section className="bg-white rounded-3xl p-5 sm:p-7 border border-cream-200 shadow-soft relative overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
+          <div className="space-y-1.5 text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cookly-greenLight text-cookly-greenDark font-bold text-xs tracking-wider uppercase shadow-xs">
+              <ShoppingBag className="w-3.5 h-3.5 text-cookly-green" />
               <span>Smart Grocery List</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-cookly-brown tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black text-cookly-brown tracking-tight">
               Daftar Belanja Bahan
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-cookly-brownLight font-medium max-w-xl">
+            <p className="text-xs sm:text-sm text-cookly-brownLight font-medium max-w-xl">
               Cek bahan yang perlu dibeli di pasar atau supermarket sebelum mulai memasak.
             </p>
           </div>
 
           {/* Quick Statistics Counters */}
-          <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
-            <div className="px-5 py-3.5 rounded-2xl bg-cream-50 border border-cream-200 text-center">
-              <span className="block text-2xl sm:text-3xl font-black text-cookly-brown">
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <div className="px-4 py-2.5 rounded-2xl bg-cream-50 border border-cream-200 text-center">
+              <span className="block text-xl sm:text-2xl font-black text-cookly-brown">
                 {pendingCount}
               </span>
-              <span className="text-xs font-black text-cookly-brownLight uppercase tracking-wider">
+              <span className="text-[10px] sm:text-xs font-bold text-cookly-brownLight uppercase tracking-wider">
                 Belum Dibeli
               </span>
             </div>
-            <div className="px-5 py-3.5 rounded-2xl bg-cookly-greenLight text-center">
-              <span className="block text-2xl sm:text-3xl font-black text-cookly-greenDark">
+            <div className="px-4 py-2.5 rounded-2xl bg-cookly-greenLight text-center">
+              <span className="block text-xl sm:text-2xl font-black text-cookly-greenDark">
                 {completedCount}
               </span>
-              <span className="text-xs font-black text-cookly-greenDark uppercase tracking-wider">
+              <span className="text-[10px] sm:text-xs font-bold text-cookly-greenDark uppercase tracking-wider">
                 Sudah Ada
               </span>
             </div>
@@ -209,12 +209,12 @@ export default function GroceryListView({
 
         {/* Progress Bar */}
         {totalCount > 0 && (
-          <div className="mt-8 pt-6 border-t border-cream-200">
-            <div className="flex items-center justify-between text-xs sm:text-sm font-black text-cookly-brown mb-2">
+          <div className="mt-5 pt-4 border-t border-cream-200">
+            <div className="flex items-center justify-between text-xs font-bold text-cookly-brown mb-1.5">
               <span>Progres Belanja</span>
               <span>{Math.round((completedCount / totalCount) * 100)}% Selesai</span>
             </div>
-            <div className="w-full h-3 bg-cream-200 rounded-full overflow-hidden">
+            <div className="w-full h-2.5 bg-cream-200 rounded-full overflow-hidden">
               <div
                 className="h-full bg-cookly-green transition-all duration-500 rounded-full"
                 style={{ width: `${(completedCount / totalCount) * 100}%` }}
@@ -225,23 +225,23 @@ export default function GroceryListView({
       </section>
 
       {/* 2. Add New Custom Item Input */}
-      <section className="bg-white rounded-3xl p-4 sm:p-6 border border-cream-200 shadow-soft">
-        <form onSubmit={handleAddCustom} className="flex flex-col sm:flex-row items-center gap-3">
+      <section className="bg-white rounded-2xl p-3 sm:p-4 border border-cream-200 shadow-soft">
+        <form onSubmit={handleAddCustom} className="flex flex-col sm:flex-row items-center gap-2.5">
           <div className="relative flex-1 w-full">
             <input
               type="text"
               value={newItemName}
               onChange={(e) => setNewItemName(e.target.value)}
               placeholder="Tambah bahan belanjaan manual (contoh: Minyak Goreng 2 Liter)..."
-              className="w-full px-5 py-4 rounded-2xl border-2 border-cream-300 bg-cream-50/40 text-base font-bold text-cookly-brown focus:outline-none focus:border-cookly-green focus:bg-white transition"
+              className="w-full px-4 py-2.5 rounded-xl border border-cream-300 bg-cream-50/40 text-xs sm:text-sm font-bold text-cookly-brown focus:outline-none focus:border-cookly-green focus:bg-white transition"
             />
           </div>
           <button
             type="submit"
             disabled={!newItemName.trim()}
-            className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-cookly-green hover:bg-cookly-greenDark disabled:opacity-50 text-white font-black text-base flex items-center justify-center gap-2 shadow-soft transition active:scale-95 flex-shrink-0"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-cookly-green hover:bg-cookly-greenDark disabled:opacity-50 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-soft transition active:scale-95 flex-shrink-0"
           >
-            <Plus className="w-5 h-5 stroke-[2.5]" />
+            <Plus className="w-4 h-4 stroke-[2.5]" />
             <span>Tambah</span>
           </button>
         </form>
@@ -289,30 +289,30 @@ export default function GroceryListView({
 
       {/* 4. Grocery List: Per Menu / Per Kotakkan */}
       {totalCount === 0 ? (
-        <section className="bg-white rounded-3xl p-12 text-center border border-dashed border-cream-300 shadow-soft space-y-4">
-          <div className="w-20 h-20 rounded-full bg-cookly-greenLight text-cookly-green flex items-center justify-center mx-auto shadow-sm">
-            <ShoppingBag className="w-10 h-10" />
+        <section className="bg-white rounded-3xl p-8 sm:p-10 text-center border border-dashed border-cream-300 shadow-soft space-y-3">
+          <div className="w-14 h-14 rounded-full bg-cookly-greenLight text-cookly-green flex items-center justify-center mx-auto shadow-sm">
+            <ShoppingBag className="w-7 h-7" />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-cookly-brown">
+          <h2 className="text-xl sm:text-2xl font-black text-cookly-brown">
             Daftar belanjaanmu masih kosong
           </h2>
-          <p className="text-sm sm:text-base text-cookly-brownLight max-w-md mx-auto font-medium">
+          <p className="text-xs sm:text-sm text-cookly-brownLight max-w-md mx-auto font-medium">
             Buka resep masakan favoritmu lalu klik tombol <b>"+ Masukkan ke Daftar Belanja"</b>, atau tuliskan bahan langsung di atas.
           </p>
           <button
             onClick={() => onNavigate("home")}
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-2xl bg-cookly-green text-white font-black text-base shadow-soft hover:bg-cookly-greenDark transition active:scale-95"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-cookly-green text-white font-bold text-xs sm:text-sm shadow-soft hover:bg-cookly-greenDark transition active:scale-95"
           >
             <span>Jelajahi Resep Sekarang</span>
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4" />
           </button>
         </section>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-5">
           {Object.entries(groupedGroceries).map(([groupTitle, items]) => (
             <div
               key={groupTitle}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-cream-200 shadow-soft space-y-4 hover:border-cookly-green/40 transition-colors"
+              className="bg-white rounded-2xl p-5 sm:p-6 border border-cream-200 shadow-soft space-y-3 hover:border-cookly-green/40 transition-colors"
             >
               {/* Group Header dengan Tombol WhatsApp Khusus Menu Ini */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-cream-200 pb-4">

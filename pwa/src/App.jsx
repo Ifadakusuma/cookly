@@ -166,8 +166,8 @@ export default function App() {
         groceryCount={groceryCount}
       />
 
-      {/* 4. Main Content Body - Full Width on Website */}
-      <main className="flex-1 w-full px-4 sm:px-8 lg:px-12 xl:px-14 pt-6">
+      {/* 4. Main Content Body - Centered & Proportionate */}
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5">
         {(currentView === "home" || currentView === "explore") && (
           <HomeView
             onSelectRecipe={(id) => navigateTo("detail", id)}

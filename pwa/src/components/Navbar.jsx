@@ -4,13 +4,13 @@ import { PlusCircle, Compass, User, Home, ShoppingBag } from "lucide-react";
 export default function Navbar({ currentView, onNavigate, groceryCount = 0 }) {
   return (
     <header className="sticky top-0 z-30 bg-cream-100/95 backdrop-blur-md border-b border-cream-200">
-      <div className="relative w-full px-4 sm:px-8 lg:px-12 xl:px-14 h-20 sm:h-24 flex items-center justify-between">
-        {/* Brand with Circular Logo (Enlarged & Polished) */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
+        {/* Brand with Circular Logo */}
         <button
           onClick={() => onNavigate("home")}
-          className="flex items-center gap-4 group text-left focus:outline-none z-10"
+          className="flex items-center gap-3 group text-left focus:outline-none z-10"
         >
-          <div className="relative w-13 h-13 sm:w-16 sm:h-16 rounded-full overflow-hidden border-3 sm:border-4 border-cookly-green shadow-soft group-hover:scale-105 transition duration-200 bg-white flex-shrink-0">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-cookly-green shadow-soft group-hover:scale-105 transition duration-200 bg-white flex-shrink-0">
             <img
               src="/logo.jpg"
               alt="Cookly"
@@ -18,54 +18,54 @@ export default function Navbar({ currentView, onNavigate, groceryCount = 0 }) {
             />
           </div>
           <div className="leading-tight">
-            <span className="text-3xl sm:text-4xl font-black tracking-tight text-cookly-brown block">
+            <span className="text-xl sm:text-2xl font-black tracking-tight text-cookly-brown block">
               Cook<span className="text-cookly-green">ly</span>
             </span>
-            <span className="hidden sm:block text-xs sm:text-sm font-black text-cookly-brownLight tracking-widest uppercase mt-0.5">
+            <span className="hidden sm:block text-[10px] sm:text-xs font-bold text-cookly-brownLight tracking-wider uppercase">
               Resep & Masakan
             </span>
           </div>
         </button>
 
         {/* Center Desktop Navigation Links (Unified Capsule Dock in True Center) */}
-        <nav className="hidden md:flex items-center p-1.5 rounded-full bg-white/95 border border-cream-200 shadow-soft md:absolute md:left-1/2 md:-translate-x-1/2 z-10">
+        <nav className="hidden md:flex items-center p-1 rounded-full bg-white/95 border border-cream-200 shadow-soft md:absolute md:left-1/2 md:-translate-x-1/2 z-10">
           <button
             onClick={() => onNavigate("home")}
-            className={`px-5 lg:px-6 py-2.5 rounded-full text-base lg:text-lg font-black transition-all duration-200 flex items-center gap-2.5 ${
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-1.5 ${
               currentView === "home"
-                ? "bg-cookly-green text-white shadow-sm"
+                ? "bg-cookly-green text-white shadow-xs"
                 : "text-cookly-brown hover:text-cookly-greenDark hover:bg-cream-100/70"
             }`}
           >
-            <Home className="w-5 h-5 lg:w-6 lg:h-6" />
+            <Home className="w-4 h-4" />
             <span>Beranda</span>
           </button>
 
           <button
             onClick={() => onNavigate("explore")}
-            className={`px-5 lg:px-6 py-2.5 rounded-full text-base lg:text-lg font-black transition-all duration-200 flex items-center gap-2.5 ${
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-1.5 ${
               currentView === "explore"
-                ? "bg-cookly-green text-white shadow-sm"
+                ? "bg-cookly-green text-white shadow-xs"
                 : "text-cookly-brown hover:text-cookly-greenDark hover:bg-cream-100/70"
             }`}
           >
-            <Compass className="w-5 h-5 lg:w-6 lg:h-6" />
+            <Compass className="w-4 h-4" />
             <span>Kategori</span>
           </button>
 
           <button
             onClick={() => onNavigate("grocery")}
-            className={`relative px-5 lg:px-6 py-2.5 rounded-full text-base lg:text-lg font-black transition-all duration-200 flex items-center gap-2.5 ${
+            className={`relative px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-1.5 ${
               currentView === "grocery"
-                ? "bg-cookly-green text-white shadow-sm"
+                ? "bg-cookly-green text-white shadow-xs"
                 : "text-cookly-brown hover:text-cookly-greenDark hover:bg-cream-100/70"
             }`}
           >
-            <ShoppingBag className="w-5 h-5 lg:w-6 lg:h-6" />
+            <ShoppingBag className="w-4 h-4" />
             <span>Belanja</span>
             {groceryCount > 0 && (
               <span
-                className={`text-xs font-black px-2 py-0.5 rounded-full transition ${
+                className={`text-[11px] font-black px-1.5 py-0.2 rounded-full transition ${
                   currentView === "grocery"
                     ? "bg-white text-cookly-green"
                     : "bg-cookly-green text-white"
@@ -78,24 +78,24 @@ export default function Navbar({ currentView, onNavigate, groceryCount = 0 }) {
 
           <button
             onClick={() => onNavigate("profile")}
-            className={`px-5 lg:px-6 py-2.5 rounded-full text-base lg:text-lg font-black transition-all duration-200 flex items-center gap-2.5 ${
+            className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-1.5 ${
               currentView === "profile"
-                ? "bg-cookly-green text-white shadow-sm"
+                ? "bg-cookly-green text-white shadow-xs"
                 : "text-cookly-brown hover:text-cookly-greenDark hover:bg-cream-100/70"
             }`}
           >
-            <User className="w-5 h-5 lg:w-6 lg:h-6" />
+            <User className="w-4 h-4" />
             <span>Profil</span>
           </button>
         </nav>
 
         {/* Right Action Button: Add Recipe */}
-        <div className="flex items-center gap-3 z-10">
+        <div className="flex items-center gap-2 z-10">
           <button
             onClick={() => onNavigate("add")}
-            className="inline-flex items-center gap-2.5 bg-cookly-green hover:bg-cookly-greenDark text-white text-base lg:text-lg font-black px-5 sm:px-7 py-3 sm:py-3.5 rounded-full shadow-soft hover:shadow-float transition duration-200 active:scale-95"
+            className="inline-flex items-center gap-2 bg-cookly-green hover:bg-cookly-greenDark text-white text-xs sm:text-sm font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-soft hover:shadow-float transition duration-200 active:scale-95"
           >
-            <PlusCircle className="w-5 h-5 lg:w-6 lg:h-6 stroke-[2.5]" />
+            <PlusCircle className="w-4 h-4 stroke-[2.2]" />
             <span className="hidden sm:inline">Tambah Resep</span>
             <span className="sm:hidden">Resep</span>
           </button>

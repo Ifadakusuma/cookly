@@ -108,7 +108,7 @@ export default function ProfileView({
   const isFavorite = (id) => favorites.some((f) => String(f.id) === String(id));
 
   return (
-    <div className="w-full pb-24 space-y-8">
+    <div className="w-full pb-20 space-y-6">
       {/* Hidden File Input for User's Custom Photo */}
       <input
         ref={fileInputRef}
@@ -120,13 +120,13 @@ export default function ProfileView({
 
       {/* ================= 1. VIEW MODE (TAMPILAN PROFIL BIASA) ================= */}
       {!isEditing ? (
-        <section className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-cream-200 shadow-soft relative overflow-hidden w-full transition-all">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 md:gap-10">
+        <section className="bg-white rounded-3xl p-5 sm:p-7 md:p-8 border border-cream-200 shadow-soft relative overflow-hidden w-full transition-all">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-7">
             {/* Clean Circular Photo Container */}
             <div className="relative group flex-shrink-0">
               <div
                 onClick={handleStartEdit}
-                className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-cookly-green/80 bg-cream-100 shadow-float cursor-pointer relative"
+                className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-3 border-cookly-green/80 bg-cream-100 shadow-float cursor-pointer relative"
                 title="Klik untuk mengubah profil"
               >
                 {profile.avatar ? (
@@ -137,55 +137,55 @@ export default function ProfileView({
                   />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center text-cookly-brownLight bg-cream-50 group-hover:bg-cream-100 transition">
-                    <User className="w-16 h-16 sm:w-20 sm:h-20 stroke-[1.5] text-cookly-brownLight group-hover:text-cookly-green transition" />
+                    <User className="w-12 h-12 sm:w-14 sm:h-14 stroke-[1.5] text-cookly-brownLight group-hover:text-cookly-green transition" />
                   </div>
                 )}
 
                 {/* Subtle Hover Overlay */}
-                <div className="absolute inset-0 bg-cookly-brown/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center text-white text-xs font-black gap-1.5 backdrop-blur-[2px]">
-                  <Pencil className="w-6 h-6" />
+                <div className="absolute inset-0 bg-cookly-brown/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center text-white text-xs font-bold gap-1 backdrop-blur-[2px]">
+                  <Pencil className="w-4 h-4" />
                   <span>Ubah Profil</span>
                 </div>
               </div>
             </div>
 
             {/* Information Column (Nama, Bio, Badge, Ubah Profil) */}
-            <div className="flex-1 w-full space-y-4 text-center sm:text-left">
+            <div className="flex-1 w-full space-y-3 text-center sm:text-left">
               {/* Top Row: Badge & Ubah Profil Button */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cookly-greenLight text-cookly-greenDark font-black text-xs sm:text-sm tracking-wider uppercase shadow-xs">
-                  <ChefHat className="w-4 h-4 text-cookly-green" />
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-2.5">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cookly-greenLight text-cookly-greenDark font-bold text-xs tracking-wider uppercase shadow-xs">
+                  <ChefHat className="w-3.5 h-3.5 text-cookly-green" />
                   <span>Koki Rumahan Cookly</span>
                 </div>
 
                 <button
                   type="button"
                   onClick={handleStartEdit}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl border-2 border-cream-300 text-cookly-brown hover:border-cookly-green hover:bg-cream-50 text-sm sm:text-base font-black transition active:scale-95 shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-2xl border border-cream-300 text-cookly-brown hover:border-cookly-green hover:bg-cream-50 text-xs sm:text-sm font-bold transition active:scale-95 shadow-xs"
                 >
-                  <Edit3 className="w-4 h-4 text-cookly-green" />
+                  <Edit3 className="w-3.5 h-3.5 text-cookly-green" />
                   <span>Ubah Profil</span>
                 </button>
               </div>
 
-              {/* Name & Bio with Generous Breathing Room */}
+              {/* Name & Bio */}
               <div>
-                <h1 className="text-3xl sm:text-4xl font-black text-cookly-brown tracking-tight leading-tight">
+                <h1 className="text-2xl sm:text-3xl font-black text-cookly-brown tracking-tight leading-tight">
                   {profile.name}
                 </h1>
-                <p className="text-base sm:text-lg text-cookly-brownLight font-medium mt-2 leading-relaxed max-w-2xl">
+                <p className="text-xs sm:text-sm text-cookly-brownLight font-medium mt-1 leading-relaxed max-w-2xl">
                   {profile.bio || "Pecinta masakan rumahan lezat dan sehat."}
                 </p>
               </div>
 
               {/* Stats Counter Pills */}
-              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-4 border-t border-cream-200">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-cream-50 border border-cream-200 text-cookly-brown font-black text-sm sm:text-base">
-                  <Heart className="w-5 h-5 text-red-500 fill-red-500" />
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 pt-3 border-t border-cream-200">
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-cream-50 border border-cream-200 text-cookly-brown font-bold text-xs sm:text-sm">
+                  <Heart className="w-4 h-4 text-red-500 fill-red-500" />
                   <span>{favorites.length} Resep Favorit</span>
                 </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-cream-50 border border-cream-200 text-cookly-brown font-black text-sm sm:text-base">
-                  <BookOpen className="w-5 h-5 text-cookly-green" />
+                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-cream-50 border border-cream-200 text-cookly-brown font-bold text-xs sm:text-sm">
+                  <BookOpen className="w-4 h-4 text-cookly-green" />
                   <span>{myRecipes.length} Resep Dibuat</span>
                 </div>
               </div>
@@ -194,15 +194,15 @@ export default function ProfileView({
         </section>
       ) : (
         /* ================= 2. EDIT MODE (TATA LETAK PERSIS SESUAI REFERENSI, BUKAN POP-UP) ================= */
-        <section className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 border border-cream-200 shadow-soft w-full transition-all animate-in fade-in duration-200">
-          <form onSubmit={handleSaveProfile} className="space-y-6">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 md:gap-10">
+        <section className="bg-white rounded-3xl p-5 sm:p-7 border border-cream-200 shadow-soft w-full transition-all animate-in fade-in duration-200">
+          <form onSubmit={handleSaveProfile} className="space-y-5">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-7">
               {/* Kolom Kiri: Foto Profil Squircle dengan Floating Pencil Button di Sudut Kanan Bawah */}
               <div className="flex flex-col items-center flex-shrink-0">
                 <div className="relative">
                   <div
                     onClick={() => fileInputRef.current?.click()}
-                    className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden bg-cream-100 border-2 border-cream-200 shadow-sm cursor-pointer relative group"
+                    className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden bg-cream-100 border-2 border-cream-200 shadow-sm cursor-pointer relative group"
                     title="Klik untuk memilih foto baru"
                   >
                     {profile.avatar ? (
@@ -213,7 +213,7 @@ export default function ProfileView({
                       />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center text-cookly-brownLight bg-cream-50">
-                        <User className="w-16 h-16 sm:w-20 sm:h-20 stroke-[1.5]" />
+                        <User className="w-12 h-12 sm:w-14 sm:h-14 stroke-[1.5]" />
                       </div>
                     )}
                   </div>
@@ -222,10 +222,10 @@ export default function ProfileView({
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="absolute -bottom-2 -right-2 w-11 h-11 rounded-full bg-white shadow-float border border-cream-200 text-cookly-brown hover:text-cookly-green flex items-center justify-center transition active:scale-95"
+                    className="absolute -bottom-1.5 -right-1.5 w-9 h-9 rounded-full bg-white shadow-float border border-cream-200 text-cookly-brown hover:text-cookly-green flex items-center justify-center transition active:scale-95"
                     title="Ganti Foto"
                   >
-                    <Pencil className="w-5 h-5" />
+                    <Pencil className="w-4 h-4" />
                   </button>
                 </div>
 
@@ -233,20 +233,20 @@ export default function ProfileView({
                   <button
                     type="button"
                     onClick={handleRemovePhoto}
-                    className="mt-3 text-xs font-bold text-red-500 hover:text-red-600 flex items-center gap-1 transition"
+                    className="mt-2 text-xs font-bold text-red-500 hover:text-red-600 flex items-center gap-1 transition"
                   >
-                    <Trash2 className="w-3.5 h-3.5" />
+                    <Trash2 className="w-3 h-3" />
                     <span>Hapus Foto</span>
                   </button>
                 )}
               </div>
 
               {/* Kolom Kanan: Dua Input Nama Berdampingan & Satu Textarea Bio Luas */}
-              <div className="flex-1 w-full space-y-4">
+              <div className="flex-1 w-full space-y-3.5">
                 {/* Baris Atas: First Name (Nama Depan) & Last Name (Nama Belakang) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-black text-cookly-brown mb-1.5 uppercase tracking-wide">
+                    <label className="block text-xs font-bold text-cookly-brown mb-1 uppercase tracking-wide">
                       Nama Depan
                     </label>
                     <input
@@ -255,12 +255,12 @@ export default function ProfileView({
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                       placeholder="Nama depan kamu..."
-                      className="w-full px-4 py-3 rounded-2xl bg-cream-100/70 border border-cream-300 text-sm sm:text-base font-bold text-cookly-brown focus:outline-none focus:border-cookly-green focus:bg-white transition"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-cream-100/70 border border-cream-300 text-xs sm:text-sm font-bold text-cookly-brown focus:outline-none focus:border-cookly-green focus:bg-white transition"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-black text-cookly-brown mb-1.5 uppercase tracking-wide">
+                    <label className="block text-xs font-bold text-cookly-brown mb-1 uppercase tracking-wide">
                       Nama Belakang
                     </label>
                     <input
@@ -268,39 +268,39 @@ export default function ProfileView({
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                       placeholder="Nama belakang (opsional)..."
-                      className="w-full px-4 py-3 rounded-2xl bg-cream-100/70 border border-cream-300 text-sm sm:text-base font-bold text-cookly-brown focus:outline-none focus:border-cookly-green focus:bg-white transition"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-cream-100/70 border border-cream-300 text-xs sm:text-sm font-bold text-cookly-brown focus:outline-none focus:border-cookly-green focus:bg-white transition"
                     />
                   </div>
                 </div>
 
                 {/* Baris Bawah: About You (Bio) */}
                 <div>
-                  <label className="block text-xs font-black text-cookly-brown mb-1.5 uppercase tracking-wide">
+                  <label className="block text-xs font-bold text-cookly-brown mb-1 uppercase tracking-wide">
                     Tentang Kamu / Bio Singkat
                   </label>
                   <textarea
-                    rows={4}
+                    rows={3}
                     value={bioInput}
                     onChange={(e) => setBioInput(e.target.value)}
                     placeholder="Ceritakan sedikit tentang dirimu, masakan favorit, atau hobi kuliner..."
-                    className="w-full px-4 py-3 rounded-2xl bg-cream-100/70 border border-cream-300 text-sm sm:text-base font-medium text-cookly-brown focus:outline-none focus:border-cookly-green focus:bg-white transition resize-none"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-cream-100/70 border border-cream-300 text-xs sm:text-sm font-medium text-cookly-brown focus:outline-none focus:border-cookly-green focus:bg-white transition resize-none"
                   />
                 </div>
               </div>
             </div>
 
             {/* Baris Bawah Kanan: Tombol Batal & Simpan Persis di Posisi Kanan Bawah */}
-            <div className="flex items-center justify-end gap-3 pt-4 border-t border-cream-200">
+            <div className="flex items-center justify-end gap-2.5 pt-3.5 border-t border-cream-200">
               <button
                 type="button"
                 onClick={() => setIsEditing(false)}
-                className="px-6 py-2.5 rounded-2xl bg-cream-200 hover:bg-cream-300 text-cookly-brown font-bold text-sm sm:text-base transition active:scale-95"
+                className="px-5 py-2 rounded-xl bg-cream-200 hover:bg-cream-300 text-cookly-brown font-bold text-xs sm:text-sm transition active:scale-95"
               >
                 Batal
               </button>
               <button
                 type="submit"
-                className="px-8 py-2.5 rounded-2xl bg-[#2B2B2B] hover:bg-black text-white font-bold text-sm sm:text-base shadow-soft transition active:scale-95"
+                className="px-6 py-2 rounded-xl bg-[#2B2B2B] hover:bg-black text-white font-bold text-xs sm:text-sm shadow-soft transition active:scale-95"
               >
                 Simpan
               </button>
