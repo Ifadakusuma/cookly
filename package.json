@@ -1,0 +1,7 @@
+{
+  "name": "cookly",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix api install && npm --prefix pwa install && npm --prefix pwa run build"
+  }
+}
