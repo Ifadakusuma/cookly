@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Environment Variables & Secrets
+.env
+.env.*
+.env.local
+!.env.example
+
+# Build & Vercel
+dist/
+.vercel/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
