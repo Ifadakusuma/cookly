@@ -236,9 +236,9 @@ export default function CategoryModal({
           </div>
 
           <div className="p-3 rounded-2xl bg-cream-50 border border-cream-200 text-[11px] text-cookly-brownLight flex items-start gap-2">
-            <AlertCircle className="w-4 h-4 text-cookly-amber flex-shrink-0 mt-0.5" />
+            <Sparkles className="w-4 h-4 text-cookly-green flex-shrink-0 mt-0.5" />
             <span>
-              Kategori yang masih digunakan oleh resep masakan tidak dapat dihapus demi menjaga integritas data resep.
+              Kategori dapat dihapus kapan saja. Resep masakan yang sebelumnya menggunakan kategori ini akan tetap aman dan tidak terhapus.
             </span>
           </div>
         </div>

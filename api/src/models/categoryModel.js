@@ -35,17 +35,32 @@ export const CategoryModel = {
   },
 
   async remove(id) {
-    // Check if any recipe is still using this category
-    const { count, error: countError } = await supabase
+    // 1. Lepaskan resep dari kategori ini (set category_id ke null) agar resep tidak hilang
+    const { error: nullifyError } = await supabase
       .from("recipes")
-      .select("id", { count: "exact", head: true })
+      .update({ category_id: null })
       .eq("category_id", id);
-    if (countError) throw countError;
 
-    if (count > 0) {
-      throw new Error(`Kategori tidak bisa dihapus karena masih digunakan oleh ${count} resep masakan.`);
+    // Jika kolom category_id memiliki constraint NOT NULL di database,
+    // alihkan resep ke kategori lain yang masih ada
+    if (nullifyError) {
+      const { data: fallbackCategory } = await supabase
+        .from("categories")
+        .select("id")
+        .neq("id", id)
+        .order("id")
+        .limit(1)
+        .maybeSingle();
+
+      if (fallbackCategory) {
+        await supabase
+          .from("recipes")
+          .update({ category_id: fallbackCategory.id })
+          .eq("category_id", id);
+      }
     }
 
+    // 2. Hapus kategori dari database
     const { error } = await supabase.from("categories").delete().eq("id", id);
     if (error) throw error;
     return { success: true, id: parseInt(id) };

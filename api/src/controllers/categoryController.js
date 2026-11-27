@@ -51,8 +51,7 @@ export const CategoryController = {
       const result = await CategoryModel.remove(req.params.id);
       res.json(result);
     } catch (err) {
-      const status = err.message.includes("masih digunakan") ? 400 : 500;
-      res.status(status).json({ error: err.message });
+      res.status(500).json({ error: err.message });
     }
   },
 };
