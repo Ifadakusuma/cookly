@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Search, Sparkles, ChefHat, RefreshCw, X } from "lucide-react";
+import { Search, Sparkles, ChefHat, RefreshCw, X, FolderPlus } from "lucide-react";
 import CategoryFilter from "../components/CategoryFilter";
+import CategoryModal from "../components/CategoryModal";
 import RecipeCard from "../components/RecipeCard";
 import { fetchRecipes, fetchCategories } from "../services/api";
 
@@ -17,6 +18,7 @@ export default function HomeView({
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [showCategoryModal, setShowCategoryModal] = useState(false);
 
   // Debounce search query
   useEffect(() => {
@@ -26,13 +28,19 @@ export default function HomeView({
     return () => clearTimeout(handler);
   }, [searchQuery]);
 
-  // Load categories once
+  // Load categories function
+  const loadCategories = async () => {
+    try {
+      const data = await fetchCategories();
+      setCategories(data);
+    } catch (err) {
+      console.error("Gagal memuat kategori:", err);
+    }
+  };
+
+  // Load categories once on mount
   useEffect(() => {
-    fetchCategories()
-      .then((data) => setCategories(data))
-      .catch((err) => {
-        console.error("Gagal memuat kategori:", err);
-      });
+    loadCategories();
   }, []);
 
   // Fetch recipes whenever category or search changes
@@ -116,7 +124,7 @@ export default function HomeView({
 
       {/* Category Filter Section - Compact & Proportionate */}
       <section id="section-kategori" className="space-y-3.5 sm:space-y-4 w-full scroll-mt-24 pt-2">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div className="space-y-1">
             <h3 className="text-xl sm:text-2xl font-black text-cookly-brown tracking-tight">
               Kategori Pilihan
@@ -125,15 +133,28 @@ export default function HomeView({
               Pilih rumpun masakan favorit untuk menyaring resep masakan
             </p>
           </div>
-          {selectedCategory && (
+
+          <div className="flex flex-wrap items-center gap-2">
             <button
-              onClick={() => setSelectedCategory("")}
-              className="text-xs sm:text-sm font-black text-cookly-green hover:underline flex items-center gap-1.5 self-start sm:self-auto px-3.5 py-1.5 rounded-full bg-cookly-greenLight/70 transition"
+              type="button"
+              onClick={() => setShowCategoryModal(true)}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-cream-300 bg-white hover:border-cookly-green text-xs font-bold text-cookly-brown hover:text-cookly-green transition active:scale-95 shadow-2xs cursor-pointer"
+              title="Tambah, edit, atau hapus kategori masakan"
             >
-              <span>✕</span>
-              <span>Tampilkan Semua Resep</span>
+              <FolderPlus className="w-3.5 h-3.5 text-cookly-green" />
+              <span>Kelola Kategori</span>
             </button>
-          )}
+
+            {selectedCategory && (
+              <button
+                onClick={() => setSelectedCategory("")}
+                className="text-xs sm:text-sm font-black text-cookly-green hover:underline flex items-center gap-1.5 self-start sm:self-auto px-3.5 py-1.5 rounded-full bg-cookly-greenLight/70 transition"
+              >
+                <span>✕</span>
+                <span>Tampilkan Semua Resep</span>
+              </button>
+            )}
+          </div>
         </div>
 
         <CategoryFilter
@@ -142,6 +163,15 @@ export default function HomeView({
           onSelect={(id) => setSelectedCategory(id)}
         />
       </section>
+
+      {/* Modal Kelola Kategori CRUD */}
+      <CategoryModal
+        isOpen={showCategoryModal}
+        onClose={() => setShowCategoryModal(false)}
+        categories={categories}
+        onCategoriesChanged={loadCategories}
+        onShowToast={onShowToast}
+      />
 
       {/* Recipes Catalog Feed */}
       <section className="space-y-4 sm:space-y-5 w-full pt-1">

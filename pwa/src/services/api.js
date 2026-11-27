@@ -10,6 +10,50 @@ export async function fetchCategories() {
   return res.json();
 }
 
+export async function createCategory(name) {
+  const res = await fetch(`${API_BASE}/categories`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name }),
+  });
+
+  const body = await res.json();
+  if (!res.ok) {
+    throw new Error(body.error || "Gagal menambahkan kategori");
+  }
+  return body;
+}
+
+export async function updateCategory(id, name) {
+  const res = await fetch(`${API_BASE}/categories/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name }),
+  });
+
+  const body = await res.json();
+  if (!res.ok) {
+    throw new Error(body.error || "Gagal memperbarui kategori");
+  }
+  return body;
+}
+
+export async function deleteCategory(id) {
+  const res = await fetch(`${API_BASE}/categories/${id}`, {
+    method: "DELETE",
+  });
+
+  const body = await res.json();
+  if (!res.ok) {
+    throw new Error(body.error || "Gagal menghapus kategori");
+  }
+  return body;
+}
+
 export async function fetchRecipes({ search = "", categoryId = "" } = {}) {
   const params = new URLSearchParams();
   if (search) params.append("search", search);
