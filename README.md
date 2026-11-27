@@ -1,5 +1,7 @@
 # Cookly - Aplikasi Katalog & Resep Masakan (Mobile & Web PWA)
 
+🌐 **Live Demo Website:** [https://cookly-resep-makanan.vercel.app](https://cookly-resep-makanan.vercel.app/)
+
 Cookly adalah aplikasi katalog dan berbagi resep masakan yang dirancang responsif untuk perangkat mobile maupun desktop menggunakan arsitektur **Progressive Web App (PWA)**. Dibangun untuk keperluan Praktikum Pemrograman Perangkat Bergerak (PPB).
 
 ---
